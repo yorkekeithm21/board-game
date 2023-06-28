@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Outlined Squares</title>
+    <title>Centered Grid</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: white;
+        }
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-gap: 5px;
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
-    <div id="container" style="display: flex; flex-wrap: wrap; justify-content: center; align-content: center; height: 100vh;">
+    <div id="grid">
         <!-- Squares will be appended here -->
     </div>
 
     <script>
-        const container = document.getElementById('container');
+        const grid = document.getElementById('grid');
 
-        // Calculate the size of the small squares, and reduce them by 40%
-        const squareSize = (window.innerWidth / 20) * 0.6;
-
-        // Create squares and add them to the container
-        for (let y = 0; y < 12; y++) {
-            for (let x = 0; x < 12; x++) {
-                const square = document.createElement('div');
-                square.style.width = `${squareSize}px`;
-                square.style.height = `${squareSize}px`;
-                square.style.border = '1px solid black';
-                square.style.backgroundColor = 'white';
-                
-                container.appendChild(square);
-            }
-
-            // Add a line break after each row
-            const breakElement = document.createElement('br');
-            container.appendChild(breakElement);
+        // Create 144 cells (12 * 12)
+        for (let i = 0; i < 144; i++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            grid.appendChild(cell);
         }
     </script>
 </body>
 </html>
-
-
