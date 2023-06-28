@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Outlined Grid</title>
+    <title>Outlined Squares</title>
     <style>
         body {
             display: flex;
@@ -13,15 +12,21 @@
             background: white;
         }
         #grid {
-            display: grid;
-            grid-template-columns: repeat(13, 1fr);
-            grid-gap: 5px;
+            width: fit-content;
+            height: fit-content;
+        }
+        .row {
+            display: flex;
         }
         .cell {
             width: 50px;
             height: 50px;
             background: white;
             border: 1px solid black;
+            margin: 2px;
+        }
+        .empty {
+            opacity: 0;
         }
     </style>
 </head>
@@ -33,16 +38,25 @@
     <script>
         const grid = document.getElementById('grid');
 
-        // Create 169 cells (13 * 13), but only at the border
+        // Create the rows
         for (let y = 0; y < 13; y++) {
-            for (let x = 0; x < 13; x++) {
-                // Don't add a cell in the center of the grid
-                if (y > 0 && y < 12 && x > 0 && x < 12) continue;
+            const row = document.createElement('div');
+            row.classList.add('row');
 
+            // Create the cells in each row
+            for (let x = 0; x < 13; x++) {
                 const cell = document.createElement('div');
                 cell.classList.add('cell');
-                grid.appendChild(cell);
+
+                // For the interior cells (not on the border), make them invisible
+                if (y > 0 && y < 12 && x > 0 && x < 12) {
+                    cell.classList.add('empty');
+                }
+
+                row.appendChild(cell);
             }
+
+            grid.appendChild(row);
         }
     </script>
 </body>
