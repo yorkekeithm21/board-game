@@ -32,11 +32,11 @@
     <script>
         const grid = document.getElementById('grid');
 
-        // Create 169 cells (13 * 13)
+        // Create 169 cells (13 * 13), but skip the cells in the center
         for (let y = 0; y < 13; y++) {
             for (let x = 0; x < 13; x++) {
                 // Don't add a cell in the center of the grid
-                if (y >= 4 && y < 9 && x >= 4 && x < 9) continue;
+                if (y >= 5 && y < 8 && x >= 5 && x < 8) continue;
 
                 const cell = document.createElement('div');
                 cell.classList.add('cell');
