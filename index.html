@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Outlined Squares</title>
+    <title>Colored Outlined Squares</title>
     <style>
         body {
             display: flex;
@@ -37,6 +37,8 @@
 
     <script>
         const grid = document.getElementById('grid');
+        const colors = ['red', 'green', 'orange', 'pink', 'yellow', 'green', 'blue', 'red'];
+        let colorIndex = 0;
 
         // Create the rows
         for (let y = 0; y < 13; y++) {
@@ -51,6 +53,15 @@
                 // For the interior cells (not on the border), make them invisible
                 if (y > 0 && y < 12 && x > 0 && x < 12) {
                     cell.classList.add('empty');
+                } else {
+                    // Make each corner square and each 7th square white
+                    if ((y === 0 && x === 0) || (y === 0 && x === 12) || (y === 12 && x === 0) || (y === 12 && x === 12) || x === 6 || y === 6) {
+                        cell.style.background = 'white';
+                    } else {
+                        // Color the other squares in the specified order
+                        cell.style.background = colors[colorIndex];
+                        colorIndex = (colorIndex + 1) % colors.length;
+                    }
                 }
 
                 row.appendChild(cell);
@@ -61,3 +72,4 @@
     </script>
 </body>
 </html>
+
