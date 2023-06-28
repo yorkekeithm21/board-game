@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Hello Page</title>
-</head>
-<body>
-    <h1>Hello</h1>
-</body>
-</html>
+<script>
+    // Select the square container
+    const squareContainer = document.querySelector('.square-container');
+
+    // Create 36 squares
+    for (let i = 0; i < 36; i++) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+        squareContainer.appendChild(square);
+    }
+</script>
