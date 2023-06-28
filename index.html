@@ -13,7 +13,7 @@
         }
         #grid {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
+            grid-template-columns: repeat(13, 1fr);
             grid-gap: 5px;
         }
         .cell {
@@ -32,11 +32,16 @@
     <script>
         const grid = document.getElementById('grid');
 
-        // Create 144 cells (12 * 12)
-        for (let i = 0; i < 144; i++) {
-            const cell = document.createElement('div');
-            cell.classList.add('cell');
-            grid.appendChild(cell);
+        // Create 169 cells (13 * 13)
+        for (let y = 0; y < 13; y++) {
+            for (let x = 0; x < 13; x++) {
+                // Don't add a cell in the center of the grid
+                if (y >= 4 && y < 9 && x >= 4 && x < 9) continue;
+
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                grid.appendChild(cell);
+            }
         }
     </script>
 </body>
