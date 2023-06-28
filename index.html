@@ -1,48 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Monopoly Board</title>
+    <title>Centered Square</title>
 </head>
 <body>
-    <div id="board">
-        <!-- The board will be generated here -->
+    <div id="container">
+        <!-- Square will be appended here -->
     </div>
 
     <script>
-        const board = document.getElementById('board');
+        const container = document.getElementById('container');
 
-        // Create 11x11 grid
-        for (let i = 0; i < 11; i++) {
-            for (let j = 0; j < 11; j++) {
-                const cell = document.createElement('div');
+        const square = document.createElement('div');
+        square.style.width = '50vw';  // Use vw (viewport width) units to make the square responsive
+        square.style.height = '50vw';  // Make the height equal to the width to ensure it's a square
+        square.style.backgroundColor = 'blue';
+        square.style.border = '5px solid black';
+        square.style.position = 'absolute';  // Position the square absolutely...
+        square.style.top = '50%';  // ...in the center of the viewport...
+        square.style.left = '50%';
+        square.style.transform = 'translate(-50%, -50%)';  // ...and adjust for the square's own dimensions
 
-                // Style the cells
-                cell.style.width = '40px';
-                cell.style.height = '40px';
-                cell.style.border = '1px solid black';
-                cell.style.boxSizing = 'border-box';  // Include border in width/height
-                
-                // Increase the size of corner cells
-                if ((i === 0 || i === 10) && (j === 0 || j === 10)) {
-                    cell.style.width = '80px';
-                    cell.style.height = '80px';
-                }
-
-                // Color the property spaces
-                if (i === 0 || i === 10 || j === 0 || j === 10) {
-                    cell.style.backgroundColor = 'lightblue';
-                } else {
-                    cell.style.backgroundColor = 'white';
-                }
-
-                // Add the cell to the board
-                board.appendChild(cell);
-            }
-            
-            // Add a line break after each row
-            const breakElement = document.createElement('br');
-            board.appendChild(breakElement);
-        }
+        container.appendChild(square);
     </script>
 </body>
 </html>
+
