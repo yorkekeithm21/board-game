@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Centered Grid</title>
+    <title>Outlined Grid</title>
     <style>
         body {
             display: flex;
@@ -32,11 +33,11 @@
     <script>
         const grid = document.getElementById('grid');
 
-        // Create 169 cells (13 * 13), but skip the cells in the center
+        // Create 169 cells (13 * 13), but only at the border
         for (let y = 0; y < 13; y++) {
             for (let x = 0; x < 13; x++) {
                 // Don't add a cell in the center of the grid
-                if (y >= 5 && y < 8 && x >= 5 && x < 8) continue;
+                if (y > 0 && y < 12 && x > 0 && x < 12) continue;
 
                 const cell = document.createElement('div');
                 cell.classList.add('cell');
