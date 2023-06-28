@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Centered Square</title>
+    <title>Centered Squares</title>
 </head>
 <body>
     <div id="container">
-        <!-- Square will be appended here -->
+        <!-- Squares will be appended here -->
     </div>
 
     <script>
         const container = document.getElementById('container');
 
-        const square = document.createElement('div');
-        square.style.width = '50vw';  // Use vw (viewport width) units to make the square responsive
-        square.style.height = '50vw';  // Make the height equal to the width to ensure it's a square
-        square.style.backgroundColor = 'blue';
-        square.style.border = '5px solid black';
-        square.style.position = 'absolute';  // Position the square absolutely...
-        square.style.top = '50%';  // ...in the center of the viewport...
-        square.style.left = '50%';
-        square.style.transform = 'translate(-50%, -50%)';  // ...and adjust for the square's own dimensions
+        const mainSquare = document.createElement('div');
+        mainSquare.style.width = '40vw';  // Reduce size to leave more room at the top and bottom
+        mainSquare.style.height = '40vw'; 
+        mainSquare.style.backgroundColor = 'white';  // Change color to white
+        mainSquare.style.border = '5px solid black';
+        mainSquare.style.position = 'absolute';  
+        mainSquare.style.top = '50%';  
+        mainSquare.style.left = '50%';
+        mainSquare.style.transform = 'translate(-50%, -50%)';  
 
-        container.appendChild(square);
+        container.appendChild(mainSquare);
+
+        // Create smaller square inside the main square
+        const smallSquare = document.createElement('div');
+        smallSquare.style.width = '80%';  // Make the smaller square 1/5 smaller than the main square
+        smallSquare.style.height = '80%';  
+        smallSquare.style.backgroundColor = 'white';
+        smallSquare.style.border = '5px solid black';
+        smallSquare.style.position = 'absolute';
+        smallSquare.style.top = '50%';
+        smallSquare.style.left = '50%';
+        smallSquare.style.transform = 'translate(-50%, -50%)';
+
+        mainSquare.appendChild(smallSquare);
     </script>
 </body>
 </html>
