@@ -1,60 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Centered Squares</title>
+    <title>Outlined Squares</title>
 </head>
 <body>
-    <div id="container">
+    <div id="container" style="display: flex; flex-wrap: wrap; justify-content: center; align-content: center; height: 100vh;">
         <!-- Squares will be appended here -->
     </div>
 
     <script>
         const container = document.getElementById('container');
 
-        const mainSquare = document.createElement('div');
-        mainSquare.style.width = '40vw';
-        mainSquare.style.height = '40vw';
-        mainSquare.style.backgroundColor = 'white';
-        mainSquare.style.border = '5px solid black';
-        mainSquare.style.position = 'absolute';
-        mainSquare.style.top = '50%';
-        mainSquare.style.left = '50%';
-        mainSquare.style.transform = 'translate(-50%, -50%)';
-        mainSquare.style.display = 'flex';
-        mainSquare.style.flexWrap = 'wrap';
-        mainSquare.style.alignContent = 'space-between';
+        // Calculate the size of the small squares
+        const squareSize = window.innerWidth / 20;
 
-        container.appendChild(mainSquare);
+        // Calculate the number of squares per side
+        const squaresPerSide = Math.floor(window.innerWidth / squareSize);
 
-        // Create smaller square inside the main square
-        const smallSquare = document.createElement('div');
-        smallSquare.style.width = '80%';
-        smallSquare.style.height = '80%';
-        smallSquare.style.backgroundColor = 'white';
-        smallSquare.style.border = '5px solid black';
-        smallSquare.style.position = 'absolute';
-        smallSquare.style.top = '50%';
-        smallSquare.style.left = '50%';
-        smallSquare.style.transform = 'translate(-50%, -50%)';
+        // Calculate the starting y-coordinate
+        const startY = Math.floor(squaresPerSide / 4);
 
-        mainSquare.appendChild(smallSquare);
+        // Create squares and add them to the container
+        for (let y = 0; y < squaresPerSide; y++) {
+            for (let x = 0; x < squaresPerSide; x++) {
+                const square = document.createElement('div');
+                square.style.width = `${squareSize}px`;
+                square.style.height = `${squareSize}px`;
+                square.style.border = '1px solid black';
 
-        // Create 12 squares on each side of the border
-        for (let i = 0; i < 48; i++) {
-            const borderSquare = document.createElement('div');
-            borderSquare.style.width = 'calc(40vw / 12 - 10px)';
-            borderSquare.style.height = 'calc(40vw / 12 - 10px)';
-            borderSquare.style.backgroundColor = 'blue';
-            borderSquare.style.position = 'relative';
+                // Only color the squares that make up the large square
+                if (y >= startY && y < startY + squaresPerSide / 2 && x >= squaresPerSide / 4 && x < squaresPerSide * 3 / 4) {
+                    square.style.backgroundColor = 'white';
+                } else {
+                    square.style.backgroundColor = 'transparent';
+                }
 
-            if (i < 12 || (i >= 24 && i < 36)) {
-                borderSquare.style.order = i;  // Use the order property to ensure the squares wrap correctly
-            } else {
-                borderSquare.style.order = 48 - i;
+                container.appendChild(square);
             }
 
-            mainSquare.insertBefore(borderSquare, smallSquare);  // Insert the border squares before the smaller square
+            // Add a line break after each row
+            const breakElement = document.createElement('br');
+            container.appendChild(breakElement);
         }
     </script>
 </body>
 </html>
+
