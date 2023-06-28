@@ -1,11 +1,23 @@
-<script>
-    // Select the square container
-    const squareContainer = document.querySelector('.square-container');
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Four Squares</title>
+</head>
+<body>
+    <div id="container">
+        <!-- Squares will be appended here -->
+    </div>
 
-    // Create 36 squares
-    for (let i = 0; i < 36; i++) {
-        const square = document.createElement('div');
-        square.classList.add('square');
-        squareContainer.appendChild(square);
-    }
-</script>
+    <script>
+        const container = document.getElementById('container');
+
+        for (let i = 0; i < 4; i++) {
+            const square = document.createElement('div');
+            square.style.width = '100px';
+            square.style.height = '100px';
+            square.style.backgroundColor = 'blue';
+            container.appendChild(square);
+        }
+    </script>
+</body>
+</html>
