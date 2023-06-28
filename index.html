@@ -36,6 +36,56 @@
 
         mainSquare.appendChild(smallSquare);
     </script>
+<script>
+    const container = document.getElementById('container');
+
+    const mainSquare = document.createElement('div');
+    mainSquare.style.width = '40vw'; 
+    mainSquare.style.height = '40vw'; 
+    mainSquare.style.backgroundColor = 'white'; 
+    mainSquare.style.border = '5px solid black';
+    mainSquare.style.position = 'absolute';  
+    mainSquare.style.top = '50%';  
+    mainSquare.style.left = '50%';
+    mainSquare.style.transform = 'translate(-50%, -50%)';
+    mainSquare.style.display = 'flex';  
+    mainSquare.style.flexWrap = 'wrap';  
+    mainSquare.style.alignContent = 'space-between'; 
+
+    container.appendChild(mainSquare);
+
+    // Create smaller square inside the main square
+    const smallSquare = document.createElement('div');
+    smallSquare.style.width = '80%'; 
+    smallSquare.style.height = '80%';  
+    smallSquare.style.backgroundColor = 'white';
+    smallSquare.style.border = '5px solid black';
+    smallSquare.style.position = 'absolute';
+    smallSquare.style.top = '50%';
+    smallSquare.style.left = '50%';
+    smallSquare.style.transform = 'translate(-50%, -50%)';
+
+    mainSquare.appendChild(smallSquare);
+
+    // Create 12 squares on each side of the border
+    for (let i = 0; i < 48; i++) {
+        const borderSquare = document.createElement('div');
+        borderSquare.style.width = 'calc(40vw / 12 - 10px)'; 
+        borderSquare.style.height = 'calc(40vw / 12 - 10px)';
+        borderSquare.style.backgroundColor = 'blue';
+        borderSquare.style.position = 'relative';
+        
+        if (i < 12 || (i >= 24 && i < 36)) {
+            borderSquare.style.order = i;  // Use the order property to ensure the squares wrap correctly
+        } else {
+            borderSquare.style.order = 48 - i;
+        }
+        
+        mainSquare.insertBefore(borderSquare, smallSquare);  // Insert the border squares before the smaller square
+    }
+</script>
+
+    
 </body>
 </html>
 
