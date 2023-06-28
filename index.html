@@ -57,6 +57,7 @@
                     // Make each corner square and each 7th square white
                     if ((y === 0 && x === 0) || (y === 0 && x === 12) || (y === 12 && x === 0) || (y === 12 && x === 12) || x === 6 || y === 6) {
                         cell.style.background = 'white';
+                    if ((y === 12 && x === 1) || (y === 12 && x === 9) || (y === 4 && x === 0) || (y === 0 && x === 10) || x === 12 || y === 5) {
                     } else {
                         // Color the other squares in the specified order
                         cell.style.background = colors[colorIndex];
