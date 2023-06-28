@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Four Squares</title>
+    <title>Monopoly Board</title>
 </head>
 <body>
-    <div id="container">
-        <!-- Squares will be appended here -->
+    <div id="board">
+        <!-- The board will be generated here -->
     </div>
 
     <script>
-        const container = document.getElementById('container');
+        const board = document.getElementById('board');
 
-        for (let i = 0; i < 4; i++) {
-            const square = document.createElement('div');
-            square.style.width = '100px';
-            square.style.height = '100px';
-            square.style.backgroundColor = 'blue';
-            container.appendChild(square);
+        // Create 11x11 grid
+        for (let i = 0; i < 11; i++) {
+            for (let j = 0; j < 11; j++) {
+                const cell = document.createElement('div');
+
+                // Style the cells
+                cell.style.width = '40px';
+                cell.style.height = '40px';
+                cell.style.border = '1px solid black';
+                cell.style.boxSizing = 'border-box';  // Include border in width/height
+                
+                // Increase the size of corner cells
+                if ((i === 0 || i === 10) && (j === 0 || j === 10)) {
+                    cell.style.width = '80px';
+                    cell.style.height = '80px';
+                }
+
+                // Color the property spaces
+                if (i === 0 || i === 10 || j === 0 || j === 10) {
+                    cell.style.backgroundColor = 'lightblue';
+                } else {
+                    cell.style.backgroundColor = 'white';
+                }
+
+                // Add the cell to the board
+                board.appendChild(cell);
+            }
+            
+            // Add a line break after each row
+            const breakElement = document.createElement('br');
+            board.appendChild(breakElement);
         }
     </script>
 </body>
