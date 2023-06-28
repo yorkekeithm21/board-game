@@ -11,30 +11,18 @@
     <script>
         const container = document.getElementById('container');
 
-        // Calculate the size of the small squares
-        const squareSize = window.innerWidth / 20;
-
-        // Calculate the number of squares per side
-        const squaresPerSide = Math.floor(window.innerWidth / squareSize);
-
-        // Calculate the starting y-coordinate
-        const startY = Math.floor(squaresPerSide / 4);
+        // Calculate the size of the small squares, and reduce them by 40%
+        const squareSize = (window.innerWidth / 20) * 0.6;
 
         // Create squares and add them to the container
-        for (let y = 0; y < squaresPerSide; y++) {
-            for (let x = 0; x < squaresPerSide; x++) {
+        for (let y = 0; y < 12; y++) {
+            for (let x = 0; x < 12; x++) {
                 const square = document.createElement('div');
                 square.style.width = `${squareSize}px`;
                 square.style.height = `${squareSize}px`;
                 square.style.border = '1px solid black';
-
-                // Only color the squares that make up the large square
-                if (y >= startY && y < startY + squaresPerSide / 2 && x >= squaresPerSide / 4 && x < squaresPerSide * 3 / 4) {
-                    square.style.backgroundColor = 'white';
-                } else {
-                    square.style.backgroundColor = 'transparent';
-                }
-
+                square.style.backgroundColor = 'white';
+                
                 container.appendChild(square);
             }
 
@@ -45,4 +33,5 @@
     </script>
 </body>
 </html>
+
 
